@@ -22,3 +22,26 @@ logs()
 		let "$[i++]"
 	done
 }
+
+help()
+{
+	echo "Available commands:"
+	echo "--help - Show this message"
+	echo "--logs - Create 100 or chosen number of texts files"
+}
+
+
+case $1 in
+	--date) date;;
+	--logs) 
+		if [ "$2" = 0 ]; then
+			logs
+		else
+			logs $2
+		fi;;
+	--help) help;;
+	*)
+        echo "Unknown command: $i"
+        help
+        ;;
+esac
