@@ -31,17 +31,32 @@ help()
 }
 
 
+
 case $1 in
 	--date) date;;
+	-d) date;;
 	--logs) 
 		if [ "$2" = 0 ]; then
 			logs
 		else
 			logs $2
 		fi;;
+	-l)
+		if [ "$2" = 0 ]; then
+			logs
+		else
+			logs $2
+		fi;;
 	--help) help;;
+	-h) help;
 	*)
         echo "Unknown command: $i"
         help
         ;;
 esac
+
+
+if [ $# -eq 0 ]; then
+    echo "No arguments provided"
+    help
+fi
