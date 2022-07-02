@@ -23,6 +23,22 @@ logs()
 	done
 }
 
+error()
+{
+	if [ "$1" -ge "0" ]; then
+		n=$1
+	else
+		n=100
+	fi
+	i=1
+	while (($i <= $n)); do
+		echo -e "Nazwa pliku: error$i.txt\\n">log$i.txt
+		echo -e "Nazwa skryptu który uwtorzył ten plik: $0\\n">>log$i.txt
+		echo -e "Data utworzenia: $day\\n">>log$i.txt
+		let "$[i++]"
+	done
+}
+
 init()
 {
 	echo "Please provide origin url:"
@@ -67,6 +83,18 @@ case $1 in
 		else
 			logs $2
 		fi;;
+	--error)
+		if [ "$2" = 0 ]; then
+			error
+		else
+			error $2
+		fi;;
+	-e)
+		if [ "$2" = 0 ]; then
+			error
+		else
+			error $2
+		fi;;
 	--help) help;;
 	-h) help;
 	*)
@@ -74,3 +102,9 @@ case $1 in
         help
         ;;
 esac
+
+
+if [ $# -eq 0 ]; then
+    echo "No arguments provided"
+    help
+fi
