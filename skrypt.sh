@@ -65,6 +65,10 @@ help()
 	echo "-d - Show current date"
 	echo "--logs - Create 100 or chosen number of texts files"
 	echo "-l - Create 100 or chosen number of texts files"
+	echo "--error - Creates 100 or chosen number of error files"
+	echo "-e - Creates 100 or chosen number of error files"
+	echo "--init - Initialize Git, changing PATH"
+	echo "-i - Initialize Git, changing PATH"
 }
 
 
@@ -95,6 +99,8 @@ case $1 in
 		else
 			error $2
 		fi;;
+	--init) init;;
+	-i) init;;
 	--help) help;;
 	-h) help;
 	*)
