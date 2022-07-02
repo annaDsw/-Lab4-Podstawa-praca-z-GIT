@@ -13,7 +13,7 @@ logs()
 		n=$1
 	else
 		n=100
-	fi
+	fi 
 	i=1
 	while (($i <= $n)); do
 		echo -e "Nazwa pliku: log$i.txt\\n">log$i.txt
