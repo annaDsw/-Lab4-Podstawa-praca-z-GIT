@@ -23,13 +23,33 @@ logs()
 	done
 }
 
+init()
+{
+	echo "Please provide origin url:"
+	read uri
+	git clone $uri
+	if [[ ":$PATH:" == ":$(pwd):" ]]; then
+	echo "PATH already contains $(pwd), skipping..."
+	else
+      	echo "Adding $(pwd) to PATH..."
+      	echo $(date) > path.bin
+      	echo "Number of processors: " $(nproc) >> path.bin
+      	echo "Environment: " $PATH >> path.bin
+      	export PATH=$PATH:$(pwd)
+	fi
+
+}
+
 help()
 {
 	echo "Available commands:"
 	echo "--help - Show this message"
+	echo "-h - Show this message"
+	echo "--date - Show current date"
+	echo "-d - Show current date"
 	echo "--logs - Create 100 or chosen number of texts files"
+	echo "-l - Create 100 or chosen number of texts files"
 }
-
 
 
 case $1 in
@@ -54,9 +74,3 @@ case $1 in
         help
         ;;
 esac
-
-
-if [ $# -eq 0 ]; then
-    echo "No arguments provided"
-    help
-fi
