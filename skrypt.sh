@@ -27,9 +27,12 @@ help()
 {
 	echo "Available commands:"
 	echo "--help - Show this message"
+	echo "-h - Show this message"
+	echo "--date - Show current date"
+	echo "-d - Show current date"
 	echo "--logs - Create 100 or chosen number of texts files"
+	echo "-l - Create 100 or chosen number of texts files"
 }
-
 
 
 case $1 in
@@ -54,9 +57,3 @@ case $1 in
         help
         ;;
 esac
-
-
-if [ $# -eq 0 ]; then
-    echo "No arguments provided"
-    help
-fi
